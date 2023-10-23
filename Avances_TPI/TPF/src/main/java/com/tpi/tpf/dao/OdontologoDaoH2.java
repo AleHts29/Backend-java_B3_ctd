@@ -1,11 +1,10 @@
 package com.tpi.tpf.dao;
 
 import com.tpi.tpf.db.DB;
-import com.tpi.tpf.model.Domicilio;
 import com.tpi.tpf.model.Odontologo;
-import com.tpi.tpf.model.Paciente;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OdontologoDaoH2 implements IDao<Odontologo>{
@@ -80,7 +79,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo>{
     @Override
     public List<Odontologo> getAll() {
         Connection connection = null;
-        List<Odontologo> odontologos = null;
+        List<Odontologo> odontologos = new ArrayList<>();
 
         try{
             connection = DB.getConnection();

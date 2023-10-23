@@ -11,6 +11,8 @@ public class Paciente {
     private LocalDate fecha;
     private Domicilio domicilio;
 
+    //Constructor por defecto
+    public Paciente(){}
 
     public Paciente(Integer id, String nombre, String apellido, String email, Integer dni, LocalDate fecha, Domicilio domicilio) {
         this.id = id;

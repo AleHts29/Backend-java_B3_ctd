@@ -6,6 +6,9 @@ public class Odontologo {
     private String nombre;
     private String matricula;
 
+    //Constructor por defecto
+    public Odontologo(){}
+
     public Odontologo(Integer id, String apellido, String nombre, String matricula) {
         this.id = id;
         this.apellido = apellido;

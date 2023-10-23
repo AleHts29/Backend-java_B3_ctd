@@ -5,6 +5,7 @@ import com.tpi.tpf.model.Domicilio;
 import com.tpi.tpf.model.Paciente;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PacienteDaoH2 implements IDao<Paciente>{
@@ -122,7 +123,7 @@ public class PacienteDaoH2 implements IDao<Paciente>{
     @Override
     public List<Paciente> getAll() {
         Connection connection = null;
-        List<Paciente> pacientes = null;
+        List<Paciente> pacientes = new ArrayList<>();
         Domicilio domicilio;
         try{
             DomicilioDaoH2 domicilioDaoH2 = new DomicilioDaoH2();
@@ -130,8 +131,12 @@ public class PacienteDaoH2 implements IDao<Paciente>{
             PreparedStatement ps = connection.prepareStatement(SQL_SEARCH_ALL);
             ResultSet rs = ps.executeQuery();
 
+
+
             while (rs.next()){
                domicilio = domicilioDaoH2.getById(rs.getInt(7));
+                System.out.println("--->  " + rs.getInt(7));
+                System.out.println(domicilio);
                 pacientes.add(new Paciente(
                         rs.getInt(1),
                         rs.getString(2),
