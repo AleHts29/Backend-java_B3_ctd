@@ -29,4 +29,14 @@ public class TurnoService {
     public List<Turno> getAll(){
         return turnoIDao.getAll();
     };
+
+    //update
+    public Turno updateAppointment(Turno turno){
+        return turnoIDao.update(turno);
+    }
+
+    //Delete
+    public void deleteById(Integer id){
+        turnoIDao.delete(id);
+    }
 }

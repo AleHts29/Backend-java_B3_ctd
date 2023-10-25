@@ -157,4 +157,14 @@ public class PacienteDaoH2 implements IDao<Paciente>{
         }
         return pacientes;
     }
+
+    @Override
+    public Paciente update(Paciente paciente) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
 }

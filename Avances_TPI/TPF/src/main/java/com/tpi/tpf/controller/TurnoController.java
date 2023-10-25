@@ -45,7 +45,46 @@ public class TurnoController {
 
 
     @GetMapping
-    public List<Turno> getAllAppointments(){
-        return turnoService.getAll();
+    public ResponseEntity<List<Turno>>  getAllAppointments(){
+        return ResponseEntity.ok(turnoService.getAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Turno> getByIdAppointment(@PathVariable Integer id){
+        Turno turno = turnoService.getById(id);
+        if(turno == null){
+            return ResponseEntity.notFound().build();
+        }
+        return  ResponseEntity.ok(turno);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAppointment(@PathVariable Integer id){
+        Turno turno = turnoService.getById(id);
+        if(turno == null){
+            return ResponseEntity.notFound().build();
+        }
+        turnoService.deleteById(id);
+        return  ResponseEntity.ok("Se elimino el Turno de ID: "+turno.getId());
+    }
+
+    @PutMapping
+    public ResponseEntity<Turno> apdateAppointment(@RequestBody Turno turno){
+        ResponseEntity<Turno> responseEntity;
+        if(turnoService.getById(turno.getId()) != null){
+            if(
+                    odontologoService.getById(turno.getOdontologo().getId())!=null &&
+                            pacienteService.getById(turno.getPaciente().getId())!=null
+            ){
+                responseEntity = ResponseEntity.ok(turnoService.updateAppointment(turno));
+            }else {
+                responseEntity = ResponseEntity.badRequest().build();
+            }
+        }else {
+            responseEntity = ResponseEntity.badRequest().build();
+        }
+
+        return responseEntity;
+    }
+
 }

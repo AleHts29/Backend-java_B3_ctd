@@ -105,4 +105,16 @@ public class OdontologoDaoH2 implements IDao<Odontologo>{
         }
         return odontologos;
     }
+
+    @Override
+    public Odontologo update(Odontologo odontologo) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
+
+
 }

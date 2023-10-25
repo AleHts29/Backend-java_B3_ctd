@@ -7,4 +7,6 @@ public interface IDao <T>{
     T getById(Integer id);
     T getByCriterio(String criterio);
     List<T> getAll();
+    T update(T t);
+    void delete(Integer id);
 }

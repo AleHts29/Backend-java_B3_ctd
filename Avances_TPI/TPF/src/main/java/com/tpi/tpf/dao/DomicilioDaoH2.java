@@ -80,4 +80,14 @@ public class DomicilioDaoH2 implements IDao<Domicilio> {
     public List<Domicilio> getAll() {
         return null;
     }
+
+    @Override
+    public Domicilio update(Domicilio domicilio) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
 }

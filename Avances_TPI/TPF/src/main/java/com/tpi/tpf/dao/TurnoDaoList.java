@@ -39,4 +39,16 @@ public class TurnoDaoList implements IDao<Turno>{
     public List<Turno> getAll() {
         return turnos;
     }
+
+    @Override
+    public Turno update(Turno turno) {
+        return null;
+    }
+
+    @Override
+    public void delete(Integer id) {
+
+    }
+
+
 }
