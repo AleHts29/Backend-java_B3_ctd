@@ -3,6 +3,7 @@ package com.tpi.tpf.service;
 import com.tpi.tpf.dao.IDao;
 import com.tpi.tpf.dao.OdontologoDaoH2;
 import com.tpi.tpf.model.Odontologo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,9 @@ import java.util.List;
 public class OdontologoService {
     private IDao<Odontologo> odontologoIDao;
 
-    public OdontologoService() {
-        this.odontologoIDao = new OdontologoDaoH2();
+    @Autowired
+    public OdontologoService(IDao<Odontologo> odontologoIDao) {
+        this.odontologoIDao = odontologoIDao;
     }
 
     //guardar

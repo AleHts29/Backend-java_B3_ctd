@@ -2,11 +2,14 @@ package com.tpi.tpf.dao;
 
 import com.tpi.tpf.db.DB;
 import com.tpi.tpf.model.Odontologo;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class OdontologoDaoH2 implements IDao<Odontologo>{
 
     private static  final String SQL_INSERT="INSERT INTO ODONTOLOGOS(APELLIDO, NOMBRE, MATRICULA) VALUES(?, ?, ?)";

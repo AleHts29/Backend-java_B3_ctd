@@ -3,11 +3,14 @@ package com.tpi.tpf.dao;
 import com.tpi.tpf.db.DB;
 import com.tpi.tpf.model.Domicilio;
 import com.tpi.tpf.model.Paciente;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class PacienteDaoH2 implements IDao<Paciente>{
     private static  final String SQL_INSERT="INSERT INTO PACIENTES(APELLIDO, NOMBRE, EMAIL, DNI, FECHA, DOMICILIO_ID) VALUES(?, ?, ?, ?, ?, ?)";
     private static final String SQL_SEARCH_X_ID="SELECT * FROM PACIENTES WHERE ID=?";

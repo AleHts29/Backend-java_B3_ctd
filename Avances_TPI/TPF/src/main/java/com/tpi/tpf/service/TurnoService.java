@@ -3,6 +3,7 @@ package com.tpi.tpf.service;
 import com.tpi.tpf.dao.IDao;
 import com.tpi.tpf.dao.TurnoDaoList;
 import com.tpi.tpf.model.Turno;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,9 @@ import java.util.List;
 public class TurnoService {
     private IDao<Turno> turnoIDao;
 
-    public TurnoService() {
-        this.turnoIDao = new TurnoDaoList();
+    @Autowired
+    public TurnoService(IDao<Turno> turnoIDao) {
+        this.turnoIDao = turnoIDao;
     }
 
     //guardar
