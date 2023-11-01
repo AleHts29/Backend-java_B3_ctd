@@ -1,6 +1,7 @@
 package com.dh.tpi_v2.controller;
 
 
+import com.dh.tpi_v2.entites.Odontologo;
 import com.dh.tpi_v2.entites.Paciente;
 import com.dh.tpi_v2.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,17 @@ private  final PacienteService pacienteService;
         }else {
            return ResponseEntity.notFound().build();
         }
+    }
 
+    @PutMapping
+    public ResponseEntity<Paciente> updatePatient(@RequestBody Paciente paciente){
+        Optional<Paciente> patientById = pacienteService.getById(paciente.getId());
+        if(patientById.isPresent()){
+            Paciente updatePatient = pacienteService.update(paciente);
+            return ResponseEntity.ok(updatePatient);
+        }else{
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.dh.tpi_v2.service;
 
+import com.dh.tpi_v2.entites.Odontologo;
 import com.dh.tpi_v2.entites.Paciente;
 import com.dh.tpi_v2.repository.PacienteRepository;
 
@@ -32,6 +33,10 @@ public class PacienteService {
         return pacienteRepository.getByCriterio(email);
     };
 
+    //update
+    public Paciente update(Paciente paciente){
+        return pacienteRepository.save(paciente);
+    };
 
     //buscarTodos
     public List<Paciente> getAll(){

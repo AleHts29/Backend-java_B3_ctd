@@ -3,6 +3,8 @@ package com.dh.tpi_v2.entites;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "pacientes")
@@ -20,9 +22,12 @@ public class Paciente {
     private Integer dni;
     @Column
     private LocalDate fecha;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="domicilio_id", referencedColumnName = "id")
     private Domicilio domicilio;
+
+    @OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+    private Set<Turno> turnos = new HashSet<>();
 
     public Long getId() {
         return id;
