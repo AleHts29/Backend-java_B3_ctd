@@ -58,12 +58,4 @@ public class Domicilio {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-
-    public Paciente getPaciente() {
-        return paciente;
-    }
-
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
 }

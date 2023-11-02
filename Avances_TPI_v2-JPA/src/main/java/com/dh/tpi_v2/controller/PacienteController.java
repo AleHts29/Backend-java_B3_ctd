@@ -1,7 +1,4 @@
 package com.dh.tpi_v2.controller;
-
-
-import com.dh.tpi_v2.entites.Odontologo;
 import com.dh.tpi_v2.entites.Paciente;
 import com.dh.tpi_v2.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +28,7 @@ private  final PacienteService pacienteService;
 
     @GetMapping
     public List<Paciente> getAllPatients(){
-        return pacienteService.getAll();
+        return pacienteService.getAllPattients();
     }
 
     @GetMapping("/{id}")

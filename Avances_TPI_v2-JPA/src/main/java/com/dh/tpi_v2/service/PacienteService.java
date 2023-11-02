@@ -39,7 +39,7 @@ public class PacienteService {
     };
 
     //buscarTodos
-    public List<Paciente> getAll(){
+    public List<Paciente> getAllPattients(){
         return pacienteRepository.findAll();
     };
 }
