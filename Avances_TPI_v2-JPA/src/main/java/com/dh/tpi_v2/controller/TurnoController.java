@@ -1,5 +1,6 @@
 package com.dh.tpi_v2.controller;
 
+import com.dh.tpi_v2.dto.TurnoDTO;
 import com.dh.tpi_v2.entites.Turno;
 import com.dh.tpi_v2.service.OdontologoService;
 import com.dh.tpi_v2.service.PacienteService;
@@ -28,10 +29,10 @@ public class TurnoController {
 
 
     @PostMapping
-    public ResponseEntity<Turno> registerAppointment(@RequestBody Turno turno){
-        ResponseEntity<Turno> responseEntity;
+    public ResponseEntity<TurnoDTO> registerAppointment(@RequestBody TurnoDTO turno){
+        ResponseEntity<TurnoDTO> responseEntity;
         //cuando esta mal
-        if(odontologoService.getById(turno.getOdontologo().getId()).isPresent() && pacienteService.getById(turno.getPaciente().getId()).isPresent()){
+        if(odontologoService.getById(turno.getOdontologo_id()).isPresent() && pacienteService.getById(turno.getPaciente_id()).isPresent()){
             responseEntity = ResponseEntity.ok(turnoService.save(turno));
         }else {
             responseEntity = ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -46,25 +47,25 @@ public class TurnoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Turno> getByIdAppointment(@PathVariable Long id){
-        Optional<Turno> turno = turnoService.getById(id);
+    public ResponseEntity<TurnoDTO> getByIdAppointment(@PathVariable Long id){
+        Optional<TurnoDTO> turno = turnoService.getById(id);
         if(turno.isPresent()){
             return  ResponseEntity.ok(turno.get());
         }
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteAppointment(@PathVariable Long id){
-        Optional<Turno> turno = turnoService.getById(id);
-        if(turno.isPresent()){
-            turnoService.deleteById(id);
-            return  ResponseEntity.ok("Se elimino el Turno de ID: "+id);
-
-        }else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<String> deleteAppointment(@PathVariable Long id){
+//        Optional<Turno> turno = turnoService.getById(id);
+//        if(turno.isPresent()){
+//            turnoService.deleteById(id);
+//            return  ResponseEntity.ok("Se elimino el Turno de ID: "+id);
+//
+//        }else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     @PutMapping
     public ResponseEntity<Turno> apdateAppointment(@RequestBody Turno turno){
