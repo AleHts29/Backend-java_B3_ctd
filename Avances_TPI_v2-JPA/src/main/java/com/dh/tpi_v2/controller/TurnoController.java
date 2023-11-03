@@ -2,6 +2,7 @@ package com.dh.tpi_v2.controller;
 
 import com.dh.tpi_v2.dto.TurnoDTO;
 import com.dh.tpi_v2.entites.Turno;
+import com.dh.tpi_v2.exceptions.ResourceNotFoundException;
 import com.dh.tpi_v2.service.OdontologoService;
 import com.dh.tpi_v2.service.PacienteService;
 import com.dh.tpi_v2.service.TurnoService;
@@ -55,17 +56,12 @@ public class TurnoController {
         return ResponseEntity.notFound().build();
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<String> deleteAppointment(@PathVariable Long id){
-//        Optional<Turno> turno = turnoService.getById(id);
-//        if(turno.isPresent()){
-//            turnoService.deleteById(id);
-//            return  ResponseEntity.ok("Se elimino el Turno de ID: "+id);
-//
-//        }else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAppointment(@PathVariable Long id) throws ResourceNotFoundException {
+            turnoService.deleteById(id); //si esto falla, salta la excepción
+            return  ResponseEntity.ok("Se elimino el Turno de ID: "+id);
+
+    }
 
     @PutMapping
     public ResponseEntity<Turno> apdateAppointment(@RequestBody Turno turno){

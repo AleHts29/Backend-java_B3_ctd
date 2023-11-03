@@ -4,6 +4,7 @@ import com.dh.tpi_v2.dto.TurnoDTO;
 import com.dh.tpi_v2.entites.Odontologo;
 import com.dh.tpi_v2.entites.Paciente;
 import com.dh.tpi_v2.entites.Turno;
+import com.dh.tpi_v2.exceptions.ResourceNotFoundException;
 import com.dh.tpi_v2.repository.TurnoRepository;
 import org.springframework.stereotype.Service;
 
@@ -75,8 +76,15 @@ public class TurnoService {
     }
 
     //Delete
-    public void deleteById(Long id){
-        turnoRepository.deleteById(id);
+    public void deleteById(Long id) throws ResourceNotFoundException {
+        // Si no existe el truno - lanzamos la Excepción
+        Optional<TurnoDTO> turnoDTO = getById(id);
+        if(turnoDTO.isPresent()){
+            turnoRepository.deleteById(id);
+        }else {
+            throw new ResourceNotFoundException("No existe el id del turno ingresado - id:"+id);
+        }
+
     }
 
 }
