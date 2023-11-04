@@ -1,32 +1,10 @@
-package com.dh.tpi_v2.entites;
+package com.example.c41.model;
 
-//import jakarta.persistence.*;
-import javax.persistence.*;
-
-@Entity
-@Table(name = "domicilios")
-public class Domicilio {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column
+public class Destino {
     private String calle;
-    @Column
     private Integer numero;
-    @Column
     private String localidad;
-    @Column
     private String provincia;
-    @OneToOne(mappedBy = "domicilio")
-    private Paciente paciente;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getCalle() {
         return calle;
